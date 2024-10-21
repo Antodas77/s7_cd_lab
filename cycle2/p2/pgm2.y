@@ -1,34 +1,54 @@
 %{
-    #include <stdio.h>
 
-    // Declare yylex, which is provided by the Lex file
-    int yylex();
+    #include<stdio.h>
 
-    // Declare yyerror, which handles errors
-    void yyerror(const char *s);
+    int valid=1;
 
-    int valid = 1;  // To check if the identifier is valid or not
 %}
 
-%token identifier  // Token for valid identifiers
+%token digit letter
 
 %%
 
-start : identifier    // The rule expects an identifier
+start : letter s
+
+s :     letter s
+
+      | digit s
+
+      |
+
       ;
 
 %%
 
-void yyerror(const char *s) {
-    printf("\n%s\n", s);  // Print the error message passed from Yacc
-    valid = 0;  // Mark as invalid if an error occurs
+int yyerror()
+
+{
+
+    printf("\nIts not a identifier!\n");
+
+    valid=0;
+
+    return 0;
+
 }
 
-int main() {
-    printf("\nEnter a name to be tested for identifier: ");
-    yyparse();  // Start parsing the input
-    if (valid) {
-        printf("\nIt is a valid identifier!\n");
+int main()
+
+{
+
+    printf("\nEnter a name to tested for identifier ");
+
+    yyparse();
+
+    if(valid)
+
+    {
+
+        printf("\nIt is a identifier!\n");
+
     }
-    return 0;
+
 }
+
