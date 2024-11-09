@@ -391,7 +391,7 @@ char *yytext;
 #define INITIAL 0
 #line 3 "pgm4.l"
 
-#include"y.tab.h"
+#include"pgm4.tab.h"
 
 #include<stdio.h>
 

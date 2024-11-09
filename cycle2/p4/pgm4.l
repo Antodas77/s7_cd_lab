@@ -1,7 +1,7 @@
 
 %{
 
-#include"y.tab.h"
+#include"pgm4.tab.h"
 
 #include<stdio.h>
 
