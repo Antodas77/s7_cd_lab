@@ -1,16 +1,25 @@
 %{
-    #include "y.tab.h"  // Include Yacc-generated token definitions
+
+    #include "y.tab.h"
+
 %}
 
 %%
 
-[a-zA-Z][a-zA-Z0-9]*    return identifier;   // Match an identifier: starting letter, followed by letters/digits
+[a-zA-Z_][a-zA-Z_0-9]* return letter;
 
-.                       return yytext[0];    // Match and return any other character
-\n                      return 0;            // End of input
+[0-9]                       return digit;
+
+.                      return yytext[0];
+
+\n                     return 0;
 
 %%
 
-int yywrap() {
-    return 1;
+int yywrap()
+
+{
+
+return 1;
+
 }
