@@ -1,0 +1,42 @@
+main:
+1. Input the number of alphabets ‘noalpha’.
+2. Store the alphabet in ‘alphabet[]’, ensuring that if epsilon (‘e’) is present, it is the last
+alphabet.
+3. Input the number of states ‘nostate’ and the starting state ‘start’.
+4. Input the number of final states ‘nofinal’ and store the states in ‘finalstate[]’.
+5. Input the number of transitions ‘notransition’.
+6. For each transition (r, c, s), call the ‘insert_trantbl()’ function to store the transition.
+7. For each state from 1 to ‘nostate’, reset the buffer and epsilon closure arrays.
+8. Call ‘findclosure()’ for each state to compute its epsilon closure.
+9. For each state and alphabet, compute the new transitions using ‘unionclosure()’ to merge
+the epsilon closures.
+10. Print the computed transitions.
+11. Call ‘findfinalstate()’ to print the final states in the equivalent NFA.
+insert_trantbl(int r, char c, int s):
+1. Call ‘findalpha(c)’ to find the index of the alphabet ‘c’.
+2. If the alphabet does not exist, print an error and exit.
+3. Create a new node to represent the transition (with state ‘s’).
+4. Insert this node at the head of the linked list for ‘transition[r][index]’ (where ‘index’ is the
+index of ‘c’ in ‘alphabet[]’).
+findalpha(char c):
+1. Loop through ‘alphabet[]’ to find the character ‘c’.
+2. If found, return its index.
+3. If not found, return 999 to indicate an error.
+findclosure(int x, int sta):
+1. If the state ‘x’ has already been visited (‘buffer[x] == 1’), return.
+2. Add state ‘x’ to the epsilon closure of ‘sta’.
+3. Mark ‘buffer[x] = 1’ to indicate that this state has been visited.
+4. If the last alphabet is ‘e’ (epsilon) and there is an epsilon transition from state ‘x’:
+5. Follow the epsilon transition and recursively call ‘findclosure()’ for the target states of
+the epsilon transition.
+unionclosure(int i):
+1. For each state in ‘e_closure[i]’, add it to the ‘set[]’ array.
+2. Increment ‘newstate’ to track new states being added.
+findfinalstate():
+For each final state:
+1. For each state ‘j’ (1 to ‘nostate’), check if any state in ‘e_closure[j]’ matches the final
+states.
+2. If there is a match, print the epsilon closure for state ‘j’.
+print_e_closure(int i)’:
+1. Loop through the states in ‘e_closure[i][]’.
+2. Print the states in the form ‘{q1, q2, ...}’.
