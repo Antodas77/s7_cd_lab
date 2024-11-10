@@ -1,0 +1,17 @@
+1. The program begins in main(), prompting the user to input an arithmetic expression.
+2. yyparse() is called to start parsing the input.
+3. The lexical analyzer matches patterns for numbers ([0-9]+) and arithmetic operators (+, -,
+*, /) and returns tokens to the parser.
+4. The parser uses the following CFG:
+ start → expression
+ expression → expression '+' term | expression '-' term | term
+ term → term '*' factor | term '/' factor | factor
+ factor → '(' expression ')' | NUMBER
+5. The parser processes tokens based on the CFG rules, performing arithmetic operations as
+it matches expressions.
+6. Intermediate results are calculated and stored using the semantic actions associated with
+each rule.
+7. If an invalid token or character is encountered, the lexer prints an error message.
+8. After successfully parsing, the result of the expression is printed.
+9. If any syntax errors occur, yyerror() is invoked, printing an error message.The program
+terminates after displaying the result or an error message.
