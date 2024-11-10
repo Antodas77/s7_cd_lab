@@ -1,0 +1,27 @@
+1. Start
+2. Create a character array line[100] to hold each line of input.
+3. Define functions to identify operators, delimiters, keywords, integers, and floating-point
+numbers.
+4. Open the input file input.txt for reading.
+5. While there are lines to read in the file:
+5.1 Read a line into the line array.
+5.2 Initialize flags for comment detection (flag1 for single-line comments, flag2
+for multi-line comments) to false.
+5.3 For each character in the line, if the character is '/' and the next character is '/',
+set flag1 to true and skip processing the line.
+5.4 For each character in the line, if the character is '/' and the next character is '*',
+skip lines until you find the closing '*/' and set flag2 to true and skip
+processing the line.
+5.5 Initialize an empty token string and an index counter set to 0.
+5.6 For each character in the line:
+5.6.1 If token is a keyword, print it as a keyword.
+5.6.2 Else if token is an integer or floating-point number, print it as a
+number.
+5.6.3 Else, print it as an identifier.
+5.6.4 Clear the token string and reset the index counter.
+5.6.5 If the character is whitespace (space, tab, or newline), continue to
+the next character.
+5.6.6 If the character is not an operator, delimiter, or whitespace, add it
+to the token string and increment the index.
+6. Close the input file after processing all lines.
+7. Stop
