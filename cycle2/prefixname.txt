@@ -1,0 +1,10 @@
+1. The program begins execution in the main function, which prompts the user to enter a
+string and calls yylex() to start scanning input.
+2. Lex Rule: The rule [a-zA-Z]* matches any sequence of alphabetic characters (including
+an empty string).
+3. Substring Check: The program loops through the current token yytext to see if it contains
+the first four letters of your name as a substring.
+4. If the first four letters of your name is found within the input string, a flag is set to
+indicate its presence. The matched string is then stored in the name variable for later use.
+5. After processing the string, the program checks the flag and displays messages based on
+whether the first four letters of your name were found or not.
