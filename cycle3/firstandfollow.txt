@@ -1,0 +1,19 @@
+1.Input the number of productions and the grammar rules.
+2.Initialize arrays for storing First and Follow sets, and flags to track if the computation for each
+non-terminal is done.
+3. For each non-terminal, find the First set:
+3.1 If the first symbol in the production is a terminal, add it to the First set.
+3.2 If the first symbol is a non-terminal, recursively compute its First set.
+3.3 If the First set of the non-terminal contains 'ε', continue checking the next symbol in
+the production.
+4. Mark the First set computation for the non-terminal as done.
+5. For the start symbol, add '$' to the Follow set.
+6. For each production, find the Follow set:
+6.1 If a non-terminal is followed by a terminal, add that terminal to the Follow set.
+6.2 If a non-terminal is followed by another non-terminal, add the First set of the latter
+(excluding 'ε') to the Follow set.
+6.3 If a non-terminal appears at the end of a production or is followed by a non-terminal
+whose First set contains 'ε', add the Follow set of the left-hand side of the production to
+the current non-terminal's Follow set.
+7. Mark the Follow set computation for the non-terminal as done.
+8. Print the First and Follow sets for each non-terminal.
