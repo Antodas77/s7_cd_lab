@@ -1,0 +1,17 @@
+1. Start
+2. Declare necessary headers.
+3. Declare a variable reg initialized to 'Z' to store intermediate results.
+4. Read the input string inp(arithmetic expression)
+5. Define the order of operator precedence: /, *, +, -, =
+6. For each operator from highest precedence to lowest
+a) Traverse the input string inp character by character
+b) If an operator matches the current operator:
+i) Print the operator and the operands (characters before and after the operator) as
+three-address code.
+ii) Assign the result to the current register (reg).
+iii) Update the expression by replacing the operands and operator with the register.
+iv) Decrement the register to use the next available register for further operations.
+c) Continue the traversal until the end of the string.
+7. Repeat step 6 for the next operator in the precedence order, continuing until all operators
+are processed
+8. Stop
