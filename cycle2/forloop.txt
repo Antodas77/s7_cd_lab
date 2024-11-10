@@ -1,0 +1,20 @@
+1. The program execution begins in the main() function, where the user is prompted to enter
+a string.
+2. The yyparse() function is called to initiate the parsing process, which triggers both the
+lexical analyzer and the YACC parser.
+3. The lexical analyzer scans the input string, recognizing tokens (FOR, PARANTHESIS,
+OPERAND, OPERATOR, COMMA, SEMICOLON, NEWLINE) based on regular
+expressions and returns them to the YACC parser.
+4. The YACC parser attempts to match the tokens against the predefined context-free
+grammar (CFG):
+ start → FOR PARANTHESIS A A B PARANTHESIS NEWLINE
+ A → OPERAND OPERATOR OPERAND SEMICOLON | OPERAND
+OPERATOR OPERAND COMMA A | SEMICOLON
+ B → OPERAND OPERATOR | OPERAND OPERATOR COMMA B
+5. If the input conforms to the CFG, the parsing continues smoothly.
+6. If any part of the input violates the grammar rules, the yyerror() function is invoked,
+which sets valid = 0 and prints "Invalid."
+7. Once the parsing completes, control returns to the main() function.
+8. The valid flag is checked. If it remains 1, indicating no errors, "Valid" is printed.
+9. The yywrap() function is called at the end of input processing to signal completion.
+10. The program successfully terminates after printing the validation result.
