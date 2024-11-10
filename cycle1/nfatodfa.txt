@@ -1,0 +1,44 @@
+main()
+1. Prompt the user to input the number of alphabets (‘noalpha’).
+2. Read and store the alphabets in ‘alphabet[]’. (Ensure ‘e’ is used for epsilon and it should
+be the last character).
+3. Input the number of states (‘nostate’), starting state (‘start’), number of final states
+(‘nofinal’), and the final state numbers in ‘finalstate[]’.
+4. Input the number of transitions (‘notransition’).
+5. For each transition (state ‘r’, alphabet ‘c’, and state ‘s’), call the ‘insert()’ function to
+store the transition.
+6. Initialize the hash table ‘hash[]’ where DFA states are stored.
+7. Create the initial DFA state from the NFA start state and add it to the DFA state list
+using ‘insertDfaState()’.
+8. Loop through each DFA state, processing transitions for each alphabet.
+9. For each new DFA state found, insert it using ‘insertDfaState()’ and print the transitions
+using ‘printnewstate()’.
+10. Print the DFA states and their transitions.
+11. Identify and print the final states using ‘findfinalstate()’.
+insert(int r, char c, int s):
+1. Call ‘findalpha(c)’ to find the index of alphabet ‘c’.
+2. If the alphabet is not found, print an error and exit.
+3. Create a new node representing the transition (‘s’).
+4. Insert the node at the head of the linked list for ‘transition[r][index]’.
+findalpha(char c):
+1. Iterate through the ‘alphabet[]’ array to find the character ‘c’.
+2. If found, return its index.
+3. If not found, return 999 as an error indicator.
+insertDfaState(struct node1 newstate):
+1. Loop through the existing DFA states in ‘hash[]’.
+2. Call ‘compare()’ to check if ‘newstate’ matches an existing DFA state.
+3. If ‘newstate’ does not already exist, increment ‘complete’ and add the new state
+to ‘hash[]’.
+compare(struct node1 a, struct node1 b):
+1. Loop through each state in ‘a.nst[]’ and ‘b.nst[]’.
+2. If any state differs between ‘a’ and ‘b’, return 0 (not equal).
+3. If all states match, return 1 (equal).
+printnewstate(struct node1 state):
+1. Loop through the ‘state.nst[]’ array.
+2. For each non-zero state, print the state in the form ‘q<number>‘.
+findfinalstate():
+1. For each DFA state in ‘hash[]’, loop through its constituent NFA states.
+2. For each NFA state in the DFA state, check if it matches any of the NFA final
+states in ‘finalstate[]’.
+3. If a DFA state contains any NFA final state, print that DFA state using
+‘printnewstate()’.
